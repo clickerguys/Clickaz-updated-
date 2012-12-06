@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clickaz App</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tag %>
+</head>
+<body class='<%= controller.controller_name %>'>
+
+
+
+
+<table style="width:100%;border:0;" border="0">
+<tr>
+<td colspan="2" style="background-color:yellow;">	<h1>iClickaz Web App</h1>
+</td>
+</tr>
+<tr>
+<td style="background-color:orange;width:30%;text-align:top;">
+	<% if session[:user_id] %>
+		<p>Welcome, <%= User.find(session[:user_id]).name.capitalize %></p>
+		<%= button_to 'Logout', logout_path, method: :delete %>
+	<% end %>
+ 
+<td style="background-color:#eeeeee;height:200px;width:70%;text-align:top;">
+<%= yield %></td>
+</tr>
+<tr>
+<td colspan="2" style="background-color:yellow;">CLICKER MENU</td>
+</tr>
+</table>
+</body>
+</html>
